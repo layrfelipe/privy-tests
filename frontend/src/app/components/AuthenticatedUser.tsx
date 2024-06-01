@@ -20,22 +20,21 @@ const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
           "create_embedded_wallet": true,
           "linked_accounts": [
             {
-              "address": "layrfpf@gmail.com",
+              "address": "maclamaiorano@gmail.com",
               "type": "email"
             }
           ]
         })
       });
-  
+
       if (!response.ok) {
-        throw new Error('POST ');
+        throw new Error('Pregenerate wallet response failed');
       }
   
       const data = await response.json();
       console.log('Pregenerate wallet response:', data);
-      // Handle the response data as needed
     } catch (error) {
-      console.error('Pregenerate wallet response: failed', error);
+      console.error('ERROR:', error);
     }
   };
 

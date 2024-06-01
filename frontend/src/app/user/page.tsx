@@ -4,10 +4,15 @@ import { usePrivy } from '@privy-io/react-auth';
 import AuthenticatedUser from '../components/AuthenticatedUser';
 import Loading from '../components/Loading';
 import styles from './user.module.scss';
+import { useEffect } from 'react';
 
 
 export default function UserPage() {
   const { ready, authenticated, user, logout, linkWallet } = usePrivy();
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
   if (!ready) {
     return <Loading />;
