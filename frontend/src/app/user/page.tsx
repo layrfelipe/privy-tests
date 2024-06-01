@@ -1,11 +1,11 @@
 "use client";
 
-import { usePrivy } from '@privy-io/react-auth';
-import AuthenticatedUser from '../components/AuthenticatedUser';
-import Loading from '../components/Loading';
-import styles from './user.module.scss';
 import { useEffect } from 'react';
-
+import { usePrivy } from '@privy-io/react-auth';
+import AuthenticatedUserData from '../components/AuthenticatedUserData';
+import Loading from '../components/Loading';
+import styles from '@/styles/User.module.scss';
+import Actions from '../components/Actions';
 
 export default function UserPage() {
   const { ready, authenticated, user, logout, linkWallet } = usePrivy();
@@ -19,7 +19,6 @@ export default function UserPage() {
   }
 
   if (!authenticated || !user) {
-    // Redirect to login page if not authenticated
     if (typeof window !== 'undefined') {
       window.location.href = '/';
     }
@@ -28,7 +27,8 @@ export default function UserPage() {
 
   return (
     <div className={styles.container}>
-      <AuthenticatedUser user={user} logout={logout} linkWallet={linkWallet} />
+      <Actions />
+      <AuthenticatedUserData user={user} logout={logout} linkWallet={linkWallet} />
     </div>
   );
 }

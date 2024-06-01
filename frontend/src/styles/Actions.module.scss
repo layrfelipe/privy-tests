@@ -1,0 +1,48 @@
+.actionsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+
+    .button {
+        background-color: #0070f3;
+        border: none;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0.5rem;
+    }
+
+    .enabled {
+        background-color: #0051ad;
+    }
+
+    .pregenerateWalletInputContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    
+        input {
+            width: 15rem;
+            outline: none;
+            padding: .5rem;
+            font-size: .9rem;
+        }
+
+        .secondaryButton {
+            background-color: #49c34d;
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0.75rem;
+        }
+    }
+}
