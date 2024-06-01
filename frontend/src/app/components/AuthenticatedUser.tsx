@@ -15,8 +15,8 @@ const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
   const { wallets } = useWallets();
 
   useEffect(() => {
-    console.log("wallets", wallets)
-  }, [wallets, user])
+    console.log("user", user)
+  }, [user])
 
   return (
     <div className={styles.container}>
@@ -36,9 +36,9 @@ const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
 
       <ul>
         {
-          user.linkedAccounts.map((account: any) => {
-            return <li>{account.type}</li>
-          })     
+          user.linkedAccounts.map((account: any, index: number) => {
+            return <li key={index}>{account.type}</li>
+          })
         }
       </ul>
 
@@ -46,9 +46,9 @@ const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
 
       <ul>
         {
-          wallets.map((wallet: any) => {
-            return <li>Wallet {wallet.address}</li>
-          })     
+          wallets.map((wallet: any, index: number) => {
+            return <li key={index}>Wallet {wallet.address}</li>
+          })
         }
       </ul>
     </div>
