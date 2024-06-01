@@ -85,7 +85,7 @@ const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
         
         <br />
 
-        <h5>PS: if a wallet wasn't automatically created for you, click in the &apos;Create a wallet&apos; button</h5>
+        <h5>PS: if a wallet wasn&apos;t automatically created for you, click in the &apos;Create a wallet&apos; button</h5>
       </div>
       
     </div>
