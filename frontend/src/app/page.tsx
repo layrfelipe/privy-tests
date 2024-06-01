@@ -21,7 +21,6 @@ export default function LoginPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Login</h1>
       <button onClick={login} className={styles.button}>
         Log in with Privy
       </button>
