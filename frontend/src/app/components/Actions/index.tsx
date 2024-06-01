@@ -55,7 +55,7 @@ const Actions = () => {
             </button>
             { showInputPreGenerateWallet &&
                 <div className={styles.pregenerateWalletInputContainer}>
-                    <input onChange={(e) => setPregenerateWalletEmail(e.target.value)}></input>
+                    <input type="email" minLength={8} onChange={(e) => setPregenerateWalletEmail(e.target.value)}></input>
                     <button className={styles.secondaryButton} onClick={pregenerateWallet}>Submit</button>
                 </div>
             }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useWallets } from '@privy-io/react-auth';
 import styles from '@/styles/AuthenticatedUserData.module.scss';
-import Actions from '../Actions';
 
 const AuthenticatedUserData = ({ user, logout, linkWallet }: any) => {
   const { wallets } = useWallets();
@@ -32,7 +31,7 @@ const AuthenticatedUserData = ({ user, logout, linkWallet }: any) => {
         <br />
 
         <h3>Linked wallets</h3>
-        <ul>
+        <ul className={styles.accountsList}>
           {
             wallets.map((wallet: any, index: number) => {
               return <li key={index}>Wallet {wallet.address}</li>
