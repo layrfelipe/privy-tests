@@ -1,30 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './AuthenticatedUser.module.scss';
+import { usePrivy, useWallets } from '@privy-io/react-auth';
 
-const formatValue = (value: any) => {
-  if (value instanceof Date) {
-    return value.toLocaleString();
-  }
-  return value ? value.email || value.username || value.address || value.number : 'None';
-};
+// const formatValue = (value: any) => {
+//   if (value instanceof Date) {
+//     return value.toLocaleString();
+//   }
+//   return value ? value.email || value.username || value.address || value.number : 'None';
+// };
 
 const AuthenticatedUser = ({ user, logout, linkWallet }: any) => {
+  const { ready, authenticated, createWallet } = usePrivy();
+
+  const { wallets } = useWallets();
+
+  useEffect(() => {
+    console.log("wallets", wallets)
+  }, [wallets, user])
+
   return (
     <div className={styles.container}>
-      <p>User {user.id} is logged in.</p>
+      <p>You are logged in!</p>
       <button onClick={logout} className={styles.button}>
         Log out
       </button>
       <button onClick={linkWallet} className={styles.button}>
         Link wallet
       </button>
-      <p>User {user.id} has linked the following accounts:</p>
+      <button disabled={!(ready && authenticated)} onClick={createWallet} className={styles.button}>
+        Create a wallet
+      </button>
+      
+      <p>User ID: {user.id}</p>
+      <p>Linked accounts</p>
+
       <ul>
-        {Object.entries(user).map(([key, value]) => (
-          <li key={key}>
-            {key.charAt(0).toUpperCase() + key.slice(1)}: {formatValue(value)}
-          </li>
-        ))}
+        {
+          user.linkedAccounts.map((account: any) => {
+            return <li>{account.type}</li>
+          })     
+        }
+      </ul>
+
+      <p>Linked wallets</p>
+
+      <ul>
+        {
+          wallets.map((wallet: any) => {
+            return <li>Wallet {wallet.address}</li>
+          })     
+        }
       </ul>
     </div>
   );

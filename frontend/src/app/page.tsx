@@ -1,11 +1,11 @@
 "use client";
 
-import useAuth from './hooks/useAuth';
 import Loading from './components/Loading';
 import styles from './page.module.scss';
+import { usePrivy } from '@privy-io/react-auth';
 
 export default function LoginPage() {
-  const { ready, authenticated, login } = useAuth();
+  const { ready, authenticated, login } = usePrivy();
 
   if (!ready) {
     return <Loading />;
